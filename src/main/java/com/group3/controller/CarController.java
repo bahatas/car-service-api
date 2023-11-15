@@ -27,7 +27,10 @@ public class CarController {
 
     @GetMapping("/get/{id}")
     public ResponseEntity<Car> getCar(@PathVariable("id") Long carId) throws IOException {
-        //go to service
+
+        log.info("Received get all car request");
+
+        //go to service and fetch data
         Car car =  carService.getCar(carId);
         return  ResponseEntity.ok().body(car);  //status code for ok ? 200  201 :Created 404: 401: 403: 415: 503:
 
@@ -36,7 +39,7 @@ public class CarController {
     @GetMapping("/get/all")
     public ResponseEntity<List<Car>> getCars() throws IOException { // checked exception
 
-        log.info("Receieved Get all car request");
+        log.info("Received get all car request");
         List<Car> cars = carService.getCars();
         return ResponseEntity.ok().body(cars);
 
